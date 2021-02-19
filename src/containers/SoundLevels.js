@@ -3,7 +3,7 @@ import ControlSlider from '../components/ControlSlider';
 
 const SoundLevels = () => {
     return (
-        <div>
+        <div className='soundToggles'>
             <ControlSlider title={'Stadium Crowd'} />
             <ControlSlider title={'Cheering Fans'} />
             <ControlSlider title={'Vendors'} />

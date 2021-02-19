@@ -8,7 +8,7 @@ import PauseIcon from '@material-ui/icons/Pause';
 
 const useStyles = makeStyles({
   root: {
-    width: 300,
+    width: 250,
   },
 });
 
@@ -28,8 +28,8 @@ export default function ContinuousSlider(props) {
   };
 
   const buttonDisplay = () => {
-    if (state.toggle === false) return <PlayArrowIcon onClick={handleChange} name="toggle" />;
-    else return <PauseIcon onClick={handleChange} name="toggle" />
+    if (state.toggle === false) return <PlayArrowIcon onClick={handleChange} name="toggle" fontSize='small' color='action'/>;
+    else return <PauseIcon onClick={handleChange} name="toggle" fontSize='small' color='action' />
   }
 
 
@@ -40,7 +40,6 @@ export default function ContinuousSlider(props) {
       </Typography>
       <Grid container spacing={2}>
         <Grid item>
-          {/* <PlayArrowIcon onClick={handleChange} name="toggle" /> */}
           {buttonDisplay()}
         </Grid>
         <Grid item xs>
