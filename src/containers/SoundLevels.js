@@ -4,8 +4,9 @@ import ControlSlider from '../components/ControlSlider';
 const SoundLevels = () => {
     return (
         <div>
-            <ControlSlider title={'Crowd Noises'} />
+            <ControlSlider title={'Stadium Crowed'} />
             <ControlSlider title={'Vendors'} />
+            <ControlSlider title={'Pipe Organ'} />
         </div>
     );
 };

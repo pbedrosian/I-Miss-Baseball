@@ -1,47 +1,45 @@
 import React from 'react';
-import Slider from '@material-ui/core/Slider';
-import Typography from '@material-ui/core/Typography';
-import PlayArrowIcon from '@material-ui/icons/PlayArrow';
-import PauseIcon from '@material-ui/icons/Pause';
+import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
+import Slider from '@material-ui/core/Slider';
+import PlayArrowIcon from '@material-ui/icons/PlayArrow';
+
+const useStyles = makeStyles({
+  root: {
+    width: 300,
+  },
+});
+
+export default function ContinuousSlider(props) {
+  const classes = useStyles();
+  const [value, setValue] = React.useState(60);
+  const [state, setState] = React.useState({
+    toggle: false
+  });
+
+  const handleChange = (event) => {
+    setState({ ...state, ['toggle']: !state.toggle });
+  };
+
+  const handleScroll = (event, newValue) => {
+    setValue(newValue);
+  };
 
 
-const ControlSlider = (props) => {
-
-    const [value, setValue] = React.useState(1);
-    const [status, setStatus] = React.useState(0)
-
-    const handleChange = (event, newValue) => {
-      setValue(newValue);
-    };
-
-    const handleClick = (event, newStatus ) => {
-      setStatus(newStatus)
-    }
-
-    const playPause = () => {
-      return 'play'
-    }
-
-    return (
-        <div>
-          <Typography id="non-linear-slider" gutterBottom>
-            {props.title}
-          </Typography>
-        <Grid container spacing={2}>
+  return (
+    <div className={classes.root}>
+      <Typography id="continuous-slider" gutterBottom>
+        {props.title}
+      </Typography>
+      <Grid container spacing={2}>
         <Grid item>
-          {playPause()}
+          <PlayArrowIcon onClick={handleChange} name="toggle" />
         </Grid>
-        <Grid item xs={3}>
-        <Slider
-              aria-label="custom thumb label"
-              onChange={handleChange}
-              defaultValue={20}
-            /> 
+        <Grid item xs>
+          <Slider value={value} onChange={handleScroll} aria-labelledby="continuous-slider" name='value' />
         </Grid>
-        </Grid>
-        </div>
-    );
-};
-
-export default ControlSlider;
+      </Grid>
+    </div>
+  );
+}
